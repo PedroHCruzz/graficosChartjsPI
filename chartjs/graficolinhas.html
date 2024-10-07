@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico Moun Soya - Umidade e Temperatura</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        canvas {
+            max-width: 80%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Variação de Umidade e Temperatura ao Longo do Tempo</h2>
+    <canvas id="graficoUmidadeTemperatura" width="400" height="200"></canvas>
+
+    <script>
+        const ctx = document.getElementById('graficoUmidadeTemperatura').getContext('2d');
+        const graficoUmidadeTemperatura = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'], 
+                datasets: [
+                    {
+                        label: 'Umidade (%)', 
+                        data: [40, 75, 50, 82, 60, 83, 70], 
+                        borderColor: 'rgba(75, 192, 192, 1)', 
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true, 
+                        tension: 0.4 
+                    },
+                    {
+                        label: 'Temperatura (°C)', 
+                        data: [22, 30, 33, 24, 38, 25, 36],
+                        borderColor: 'rgba(255, 99, 132, 1)', 
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)', 
+                        fill: true, 
+                        tension: 0.4 
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true, 
+                        max: 100 
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Umidade (%) e Temperatura (°C) ao longo das horas'
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
